@@ -7,7 +7,8 @@ module.exports = {
 
 function index(req, res) {
     res.render('devSkills/index', {
-        devSkills: DevSkill.getAll()
+        devSkills: DevSkill.getAll(),
+        time: req.time  // add this line
     });
 }
 

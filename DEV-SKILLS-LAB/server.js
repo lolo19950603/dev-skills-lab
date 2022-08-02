@@ -14,6 +14,21 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
+// my first middleware
+	
+// add middleware below the above line of code
+app.use(function(req, res, next) {
+  console.log('Hello SEI!');
+  // Add a time property to the req object
+  req.time = new Date().toLocaleTimeString();
+  next();
+});
+
+
+
+
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
