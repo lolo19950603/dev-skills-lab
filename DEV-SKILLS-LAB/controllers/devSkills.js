@@ -4,7 +4,10 @@ module.exports = {
     index,
     show,
     createPage,
-    create
+    create,
+    deleteSkill,
+    edit,
+    editSkill
 }
 
 function index(req, res) {
@@ -27,5 +30,21 @@ function createPage(req, res) {
 
 function create(req, res) {
     DevSkill.create(req.body.skill, req.body.years);
-    res.redirect('devskills');
+    res.redirect('/devskills');
+}
+
+function deleteSkill(req, res) {
+    DevSkill.deleteSkill(req.params.id);
+    res.redirect('/devskills');
+}
+
+function edit(req, res) {
+    res.render('devskills/edit', {
+        devSkill: DevSkill.getOne(req.params.id)
+    });
+}
+
+function editSkill(req, res) {
+    DevSkill.editSkill(req.params.id, req.body);
+    res.redirect('/devskills/' + req.params.id);
 }

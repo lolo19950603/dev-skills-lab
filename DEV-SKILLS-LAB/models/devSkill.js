@@ -10,7 +10,9 @@ idCounter = 165486
 module.exports = {
     getAll,
     getOne,
-    create
+    create,
+    deleteSkill,
+    editSkill
 }
 
 function getAll() {
@@ -28,4 +30,15 @@ function getOne(id) {
 
 function create(skill, exp) {
     devSkills.push({id: idCounter, name: skill, years: exp})
+}
+
+function deleteSkill(id) {
+    const idx = devSkills.findIndex(skill => skill.id === parseInt(id));
+    devSkills.splice(idx, 1);
+}
+
+function editSkill(id, body) {
+    skill = getOne(id);
+    skill.name = body.skill;
+    skill.years = body.years;
 }

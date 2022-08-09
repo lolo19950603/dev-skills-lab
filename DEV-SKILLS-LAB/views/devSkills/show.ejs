@@ -10,5 +10,10 @@
     <h1>Skill id #<%= devSkill.id %></h1>
     <h3>Skill: <%= devSkill.name %></h3>
     <h3>Experience: <%= devSkill.years %> years</h3>
+    <form action="/devSkills/<%= devSkill.id %>?_method=DELETE"
+      class="delete-form" method="POST">
+      <a href="/devSkills/<%= devSkill.id %>/edit">Edit Skill</a>
+      <button type="submit">Delete Skill</button>
+    </form>
   </body>
 </html>
